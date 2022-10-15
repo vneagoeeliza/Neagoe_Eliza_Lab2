@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Neagoe_Eliza_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Neagoe_Eliza_Lab2.Data;
 namespace Neagoe_Eliza_Lab2.Migrations
 {
     [DbContext(typeof(Neagoe_Eliza_Lab2Context))]
-    partial class Neagoe_Eliza_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221015151313_migrarenew")]
+    partial class migrarenew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +34,8 @@ namespace Neagoe_Eliza_Lab2.Migrations
 
                     b.Property<string>("Author")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
@@ -45,7 +48,8 @@ namespace Neagoe_Eliza_Lab2.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("ID");
 
@@ -62,7 +66,7 @@ namespace Neagoe_Eliza_Lab2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryID")
@@ -124,7 +128,9 @@ namespace Neagoe_Eliza_Lab2.Migrations
                 {
                     b.HasOne("Neagoe_Eliza_Lab2.Models.Book", "Book")
                         .WithMany("BookCategories")
-                        .HasForeignKey("BookID");
+                        .HasForeignKey("BookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Neagoe_Eliza_Lab2.Models.Category", "Category")
                         .WithMany("BookCategories")
