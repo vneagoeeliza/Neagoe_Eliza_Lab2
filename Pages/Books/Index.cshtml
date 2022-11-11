@@ -26,7 +26,10 @@
                 @Html.DisplayNameFor(model => model.Book[0].PublishingDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Book[0].Publisher)
+                @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Author.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].BookCategories)
@@ -47,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.Author.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
@@ -58,6 +61,9 @@
             <td>
                     @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
              </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FullName)
+                </td>
                 <td>
                     @{
                         foreach (var category in item.BookCategories)

@@ -13,8 +13,8 @@ namespace Neagoe_Eliza_Lab2.Models
       //  [RegularExpression(@"^[A-Z][a-z]+\s[A-Z][a-z]+$",
       //      ErrorMessage ="Numele autorului trebuie sa fie de forma 'Prenume Nume'"), Required, 
 //StringLength(50, MinimumLength = 3)]
-
-        public string Author { get; set; }
+        public int? AuthorID { get; set; }
+        public Author? Author { get; set; }
       //  [Range(1, 300)]
         [Column(TypeName ="decimal(6, 2)")]
         public decimal Price { get; set; }
