@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Neagoe_Eliza_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Neagoe_Eliza_Lab2.Data;
 namespace Neagoe_Eliza_Lab2.Migrations
 {
     [DbContext(typeof(Neagoe_Eliza_Lab2Context))]
-    partial class Neagoe_Eliza_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221215184135_Borrowings1")]
+    partial class Borrowings1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
