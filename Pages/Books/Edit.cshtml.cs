@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,9 +13,11 @@ using Neagoe_Eliza_Lab2.Models;
 
 namespace Neagoe_Eliza_Lab2.Pages.Books
 {
-   
- public class EditModel : BookCategoriesPageModel
+    [Authorize(Roles = "Admin")]
+
+    public class EditModel : BookCategoriesPageModel
     {
+
         private readonly Neagoe_Eliza_Lab2.Data.Neagoe_Eliza_Lab2Context _context;
         public EditModel(Neagoe_Eliza_Lab2.Data.Neagoe_Eliza_Lab2Context context)
         {
